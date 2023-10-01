@@ -16,7 +16,7 @@ namespace PTMK_TEST.Extensions
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "IF OBJECT_ID('Employees') IS NOT NULL AND INDEXPROPERTY(OBJECT_ID('Employees'), 'FullName_idx', 'IndexId') IS NULL BEGIN CREATE INDEX FullName_idx ON Employees (FullName); END;";
+                cmd.CommandText = "IF OBJECT_ID('Employees') IS NOT NULL AND INDEXPROPERTY(OBJECT_ID('Employees'), 'FullName_idx', 'IndexId') IS NULL BEGIN CREATE INDEX FullName_idx ON Employees (FullName, Gender); END;";
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
                 connection.Close();

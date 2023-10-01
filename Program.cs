@@ -37,7 +37,7 @@ namespace PTMK_TEST
                         Gender = args[3],
                     };
                     service.CreateEmployee(emp);
-                    Console.WriteLine("Сотрудники добавлен");
+                    Console.WriteLine("Сотрудник добавлен");
                     break; 
                 case "3":
                     var employees = service.GetAllWithSort();
