@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace PTMK_TEST.Extensions
 {
-    public static class IndexCreator
+    public static class DatabaseCreator
     {
-        public static void CreateIndex()
+        public static void CreateDatabase()
         {
-            var conString = "Data Source=localhost;Initial Catalog=ptmk_test;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            var conString = "Data Source=localhost;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "IF OBJECT_ID('Employees') IS NOT NULL AND INDEXPROPERTY(OBJECT_ID('Employees'), 'FullName_idx', 'IndexId') IS NULL BEGIN CREATE INDEX FullName_idx ON Employees (FullName); END;";
+                cmd.CommandText = "BEGIN TRY CREATE DATABASE ptmk_test; END TRY BEGIN CATCH IF ERROR_NUMBER() <> 1801 BEGIN THROW; END; END CATCH;";
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
+                Console.WriteLine("База данных ptmk_test создана");
                 connection.Close();
             }
         }

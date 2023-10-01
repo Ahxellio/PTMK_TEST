@@ -22,7 +22,7 @@ namespace PTMK_TEST.Extensions
                 cmd.CommandText = "IF OBJECT_ID(N'Employees') IS NULL CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY, FullName NVARCHAR(100) NOT NULL, BirthdayDate DATE NOT NULL,Gender NVARCHAR(15) NOT NULL) ;";
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("Таблица Emloyees создана");
+                Console.WriteLine("Таблица Employees создана");
                 connection.Close();
             }
         }

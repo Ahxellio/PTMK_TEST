@@ -25,6 +25,7 @@ namespace PTMK_TEST
             switch (arg)
             {
                 case "1":
+                    DatabaseCreator.CreateDatabase();
                     TableCreator.CreateTable();
                     break;
                 case "2":
